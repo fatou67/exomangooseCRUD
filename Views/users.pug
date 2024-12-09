@@ -1,0 +1,23 @@
+
+
+extends layout
+
+block content
+  .container.mx-auto.p-5
+    h1.text-2xl.font-bold.mb-5 Liste des utilisateurs
+
+    if users && users.length
+      each user in users
+        .bg-white.p-6.rounded.shadow.mb-6
+          p.text-lg.font-bold Nom : #{user.nom}
+          p Prénom : #{user.prenom}
+          p Âge : #{user.age}
+          p Email : #{user.email}
+          p Téléphone : #{user.telephone}
+          form(action=`/users/${user._id}`, method="DELETE")
+            button.bg-red-500.text-white.px-3.py-1.rounded Supprimer
+    else
+      p.text-gray-500 
+
+
+

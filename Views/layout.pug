@@ -1,0 +1,23 @@
+
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Barre de Navigation
+    link(rel='stylesheet', href='https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css')
+  body
+    nav.bg-gray-800.text-white.p-4
+      .container.mx-auto.flex.justify-between.items-center
+
+        a(href='/').text-2xl.font-bold.text-white Home
+        ul.flex.space-x-6
+          li
+            a(href='/formulaire' class='hover:text-gray-400') formulaire
+          li
+            a(href='/users' class='hover:text-gray-400') users 
+          li
+            a(href='/about' class='hover:text-gray-400') À propos
+
+          
+
+    block content

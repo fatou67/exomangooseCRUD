@@ -1,0 +1,14 @@
+# Ignorer le dossier node_modules
+node_modules/
+
+# Ignorer les fichiers log
+*.log
+
+# Ignorer les fichiers système (MacOS, Windows, etc.)
+.DS_Store
+Thumbs.db
+
+# Ignorer les fichiers de configuration de l'éditeur (par exemple Visual Studio Code)
+.vscode/
+
+# Ajouter d'autres fichiers ou dossiers à ignorer selon vos besoins
