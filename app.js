@@ -2,6 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
+const methodOverride = require('method-override');
+app.use(methodOverride('_method'));
+
 const app = express(); 
 
 // Configuration du moteur de vue Pug
@@ -59,17 +62,18 @@ app.post('/users:id', async (req, res) => {
 });
 
 // supprimer un utilisateur par ID
-app.delete('/users/${user._id}', async (req, res) => {
+app.delete('/users/:id', async (req, res) => {
   try {
-    const deletedUser = await User.findByIdAndDelete(req.params.id); 
+    const deletedUser = await User.findByIdAndDelete(req.params.id);
     if (!deletedUser) {
-      return res.status(404).json({ message: "Utilisateur non trouvé" });
+      return res.status(404).send("Utilisateur non trouvé");
     }
-    res.json({ message: "Utilisateur supprimé", users: deletedUser }); 
+    res.redirect('/users'); // Redirige vers la liste des utilisateurs
   } catch (err) {
-    res.status(500).json({ message: "Erreur de suppression", error: err }); 
+    res.status(500).send("Erreur lors de la suppression : " + err.message);
   }
 });
+
 
 
 app.put('/users/:id', async (req, res) => {
